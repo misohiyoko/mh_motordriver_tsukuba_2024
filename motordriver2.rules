@@ -11,7 +11,7 @@
     (via_costs 50)
     (plane_via_costs 5)
     (start_ripup_costs 100)
-    (start_pass_no 1979)
+    (start_pass_no 1985)
     (layer_rule F.Cu
       (active on)
       (preferred_direction horizontal)
@@ -29,11 +29,12 @@
     (width 200.0)
     (clearance 200.2)
     (clearance 100.0 (type smd_to_turn_gap))
-    (clearance 50.0 (type smd))
+    (clearance 200.2 (type smd))
     (clearance 200.2 (type "kicad_default"))
     (clearance 200.2 (type Imp50))
     (clearance 200.2 (type Pow0.44A))
-    (clearance 400.2 (type Pow20A))
+    (clearance 200.2 (type Pow20A))
+    (clearance 200.2 (type kicad))
   )
   (padstack "Via[0-1]_800:400_um"
     (shape
@@ -52,6 +53,30 @@
       (circle B.Cu 6000.0 0.0 0.0)
     )
     (attach off)
+  )
+  (padstack "Via[0-1]_5000:4000_um"
+    (shape
+      (circle F.Cu 5000.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 5000.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_5000:4000_um" "Via[0-1]_5000:4000_um" default
+  )
+  (via 
+    "Via[0-1]_5000:4000_um-kicad_default" "Via[0-1]_5000:4000_um" "kicad_default"
+  )
+  (via 
+    "Via[0-1]_5000:4000_um-Imp50" "Via[0-1]_5000:4000_um" Imp50
+  )
+  (via 
+    "Via[0-1]_5000:4000_um-Pow0.44A" "Via[0-1]_5000:4000_um" Pow0.44A
+  )
+  (via 
+    "Via[0-1]_5000:4000_um-Pow20A" "Via[0-1]_5000:4000_um" Pow20A
   )
   (via 
     "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
@@ -109,16 +134,12 @@
     )
   )
   (class "kicad_default"
-    GND VDD "Net-(M1-+)" "Net-(M1--)" /VSen +3.3V +12V "Net-(U3-PF0)"
-    "Net-(U3-PF1)" "Net-(U3-PC14)" "Net-(U3-PC15)" "Net-(JP1-B)" "Net-(U2-BST)" +3.3VA "Net-(U5-BST)" "Net-(D4-K)"
-    "Net-(D4-A)" "Net-(D5-K)" "Net-(D5-A)" "/COMP4_OUT" "Net-(D7-A)" "/COMP2_OUT" "Net-(D8-A)" "/IO_OUT4"
-    "Net-(D9-A)" "Net-(D10-K)" "Net-(D10-A)" "Net-(D11-K)" "Net-(D11-A)" "/IO_OUT3" "Net-(D12-A)" "Net-(D14-A2)"
-    "Net-(D15-A2)" "Net-(D16-A2)" "Net-(D17-A2)" "Net-(D18-A2)" "Net-(D22-A2)" "Net-(D23-A2)" "Net-(D24-A2)" "Net-(D25-A2)"
-    "Net-(D28-A2)" "unconnected-(J2-Pad1)" "unconnected-(J2-Pad4)" "unconnected-(J2-Pad8)" "unconnected-(J3-Pad1)" "unconnected-(J3-Pad4)" "unconnected-(J3-Pad8)" /SWO
-    "Net-(Q1-G)" "Net-(Q2-G)" "Net-(Q3-G)" "Net-(Q4-G)" "Net-(U3-BOOT0)" "/I2C_SDA" "/I2C_SCL" "/COMP4_INM"
-    "/IO_IN1" "/IO_IN2" "/TIM1_BKIN2" "/TIM1_BKIN" /NRST "/USART3_TX" "/USART3_RX" /SWCLK
-    /SWDIO "Net-(U3-PA0)" "Net-(U3-PA1)" "Net-(U3-PA2)" "Net-(U3-PA3)" "/DAC_OUT" "/OPAMP_OUT" "/CAN_TX_STM"
-    "/CAN_RX_STM" "/IO_OUT2" /GATEHA /GATELA /GATELB /GATEHB "/IO_OUT1" "/ADC1_IN13"
+    "Net-(M1-+)" "/voltage_motor" VDD GND +5V "Net-(D1-K)" "Net-(D6-K)" "Net-(D7-DOUT)"
+    "unconnected-(J2-Pad1)" "unconnected-(J2-Pad4)" "unconnected-(J2-Pad8)" /LED "Net-(Q1-G)" "Net-(Q2-G)" "Net-(Q3-G)" "Net-(Q4-G)"
+    /GATEHA /GATELA /GATELB /GATEHB "unconnected-(D8-DOUT-Pad2)" "/PIC_UART_TX" "/PIC_UART_RX" "unconnected-(J2-Pad7)"
+    "unconnected-(J2-Pad9)" "Net-(J3-Pin_1)" "Net-(J3-Pin_4)" "Net-(J3-Pin_5)" "unconnected-(J3-Pin_6-Pad6)" "unconnected-(J3-Pin_7-Pad7)" "unconnected-(J3-Pin_8-Pad8)" /SDA
+    /SCL /IN2 /ISenseIN /MCLR* "Net-(U1B-+)" /IN1 /PGD /PGC
+    /VSenseIN /INT "Net-(U2-HO)" "Net-(U2-LO)" "Net-(U4-HO)" "Net-(U4-LO)" /VSen
     (clearance_class "kicad_default")
     (via_rule "kicad_default")
     (rule
@@ -129,7 +150,6 @@
     )
   )
   (class Imp50
-    "/CAN_P" "/CAN_N"
     (clearance_class Imp50)
     (via_rule Imp50)
     (rule
