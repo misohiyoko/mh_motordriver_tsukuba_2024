@@ -27,3 +27,5 @@ fp-info-cache
 # Exported BOM files
 *.xml
 *.csv
+/motor_driver_controller.X/build/
+/motor_driver_controller.X/dist/
